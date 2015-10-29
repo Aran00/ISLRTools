@@ -3,6 +3,7 @@ __author__ = 'ryu'
 from pandas import DataFrame, Series
 import numpy as np
 
+
 def prob_to_value(x, threshold):
     return 1 if x > threshold else 0
 

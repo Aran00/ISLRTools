@@ -20,6 +20,12 @@ setup(
     url=URL,
     packages=find_packages(exclude=["tests.*", "tests"]),
     # py_modules = ['lrplot', 'tableplot'],
+    install_requires=[
+        "numpy",
+        "pandas",
+        "matplotlib",
+        "statsmodels"
+    ],
     zip_safe=False
 )
 
