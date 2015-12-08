@@ -29,11 +29,11 @@ def ortho_poly_predict(x, alpha, norm2, degree = 1):
     x = np.asarray(x).flatten()
     n = degree + 1
     Z = np.empty((len(x), n))
-    Z[:,0] = 1
+    Z[:, 0] = 1
     if degree > 0:
         Z[:, 1] = x - alpha[0]
     if degree > 1:
-        for i in np.arange(1,degree):
+        for i in np.arange(1, degree):
             Z[:, i+1] = (x - alpha[i]) * Z[:, i] - (norm2[i] / norm2[i-1]) * Z[:, i-1]
     Z /= np.sqrt(norm2)
     Z[:, 0] = 1     # Added by Ran, to keep exactly the same with R poly function
