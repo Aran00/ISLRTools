@@ -15,7 +15,7 @@ def load_data(dataset_name, y_col, x_cols=None, drop_na=True, transform_label=Tr
         data = data.dropna()
     if transform_label:
         data = _transform_label(data)
-    X, y = _prepare_data(data, y_col, x_cols)
+    X, y, x_cols = _prepare_data(data, y_col, x_cols)
     return Bunch(data=X, target=y, full=data, feature_names=x_cols, target_property=y_col)
 
 
@@ -25,7 +25,7 @@ def _prepare_data(data, y_col, x_cols=None):
         x_cols = data.columns.tolist()
         x_cols.remove(y_col)
     X = data[x_cols]
-    return X, y
+    return X, y, x_cols
 
 
 def _transform_label(data):
