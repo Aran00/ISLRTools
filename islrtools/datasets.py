@@ -20,11 +20,16 @@ def load_data(dataset_name, y_col, x_cols=None, drop_na=True, transform_label=Tr
 
 
 def _prepare_data(data, y_col, x_cols=None):
-    y = data[y_col]
-    if x_cols is None:
+    if y_col is None:
+        y = None
         x_cols = data.columns.tolist()
-        x_cols.remove(y_col)
-    X = data[x_cols]
+        X = data
+    else:
+        y = data[y_col]
+        if x_cols is None:
+            x_cols = data.columns.tolist()
+            x_cols.remove(y_col)
+        X = data[x_cols]
     return X, y, x_cols
 
 
